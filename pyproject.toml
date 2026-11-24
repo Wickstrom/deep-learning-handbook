@@ -1,0 +1,17 @@
+[project]
+name = "deep-learning-handbook"
+version = "0.1.0"
+description = "Lecture notebooks for FYS-3033 Deep Learning (UiT)"
+readme = "README.MD"
+requires-python = ">=3.10"
+dependencies = [
+    "marimo>=0.25",
+    "numpy",
+    "matplotlib",
+]
+
+[tool.uv]
+# Each marimo .py under notebooks/ ships its own PEP 723 inline script
+# metadata. uv reads those automatically when you run a single notebook
+# (`uv run marimo edit notebooks/01/neural_networks.py`), so the deps above
+# only need to cover the project environment used to build the decks.

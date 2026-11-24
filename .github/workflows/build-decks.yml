@@ -1,0 +1,39 @@
+name: Build slide decks
+
+# Build the Marimo WASM decks on every push and keep them as a downloadable
+# artifact. The repository is private, so this workflow intentionally does not
+# deploy to GitHub Pages: Pages needs a paid plan for private repositories and
+# would publish the material publicly.
+
+on:
+  push:
+    branches: [main, master]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Install uv
+        uses: astral-sh/setup-uv@v7
+        with:
+          python-version: '3.10'
+
+      - name: Install dependencies
+        run: uv sync --frozen
+
+      - name: Build decks
+        run: ./scripts/build_decks.sh
+
+      - name: Upload decks
+        uses: actions/upload-artifact@v4
+        with:
+          name: deep-learning-decks
+          path: build/
+          if-no-files-found: error
