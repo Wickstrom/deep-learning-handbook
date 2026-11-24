@@ -1,9 +1,11 @@
-name: Build slide decks
+name: Build and deploy slide decks
 
-# Build the Marimo WASM decks on every push and keep them as a downloadable
-# artifact. The repository is private, so this workflow intentionally does not
-# deploy to GitHub Pages: Pages needs a paid plan for private repositories and
-# would publish the material publicly.
+# Export the Marimo notebooks as WASM slide decks and publish them to GitHub
+# Pages at https://wickstrom.github.io/deep-learning-handbook/.
+#
+# The repository is private, but Pages sites on paid plans are publicly
+# readable, so treat the deployed material as public. The build is also kept
+# as a downloadable artifact.
 
 on:
   push:
@@ -12,6 +14,10 @@ on:
 
 permissions:
   contents: read
+
+concurrency:
+  group: pages
+  cancel-in-progress: false
 
 jobs:
   build:
@@ -31,9 +37,31 @@ jobs:
       - name: Build decks
         run: ./scripts/build_decks.sh
 
-      - name: Upload decks
+      - name: Upload decks as artifact
         uses: actions/upload-artifact@v4
         with:
           name: deep-learning-decks
           path: build/
           if-no-files-found: error
+
+      - name: Configure Pages
+        uses: actions/configure-pages@v5
+
+      - name: Upload Pages artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: build/
+
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    permissions:
+      pages: write
+      id-token: write
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4

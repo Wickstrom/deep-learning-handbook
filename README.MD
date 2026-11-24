@@ -70,13 +70,19 @@ Then open <http://localhost:8000>. The build script writes the decks to
 `index.html` as a landing page.
 
 A GitHub Actions workflow (`.github/workflows/build-decks.yml`) builds the same
-artifacts on every push and uploads them as a downloadable archive. It does not
-publish them.
+artifacts on every push, publishes them to GitHub Pages, and uploads them as a
+downloadable archive.
 
-> **A note on private hosting.** GitHub Pages is not available for private
-> repositories on the free plan. Even on plans that support it, the published
-> site is usually public. Until that changes, use the local build or the
-> workflow artifact.
+## 🌐 Online slides
+
+The decks are deployed to GitHub Pages:
+
+**<https://wickstrom.github.io/deep-learning-handbook/>**
+
+> **Note on privacy.** The repository is private, but GitHub Pages sites are
+> publicly readable. Links to the deployed slides can be shared with anyone,
+> and search engines may index them. Keep that in mind before the material is
+> ready for students outside the course.
 
 ## 🗂 Repository layout
 

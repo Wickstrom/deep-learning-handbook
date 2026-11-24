@@ -39,6 +39,12 @@ echo "→ Lecture 2: Neural networks"
 
 cp index.html "$OUT/index.html"
 
+# marimo drops a CLAUDE.md next to each export; it is not part of the site.
+find "$OUT" -name 'CLAUDE.md' -delete
+
+# GitHub Pages must not run the site through Jekyll.
+touch "$OUT/.nojekyll"
+
 echo
 echo "Decks written to $OUT/."
 echo "Serve them with:  python3 -m http.server --directory $OUT 8000"
