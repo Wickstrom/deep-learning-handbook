@@ -129,6 +129,12 @@ def _():
     under a figure to compare settings. Run <code>marimo edit</code> on this
     notebook to see the code behind each one.
     </div>
+
+    <div style="margin-top:0.8rem;padding:10px 14px;border-left:4px solid #d97706;background:#fffbeb;font-size:0.9rem;">
+    🚧 <strong>Under construction</strong> — only the first two lectures are
+    written so far. Exercises and the remaining lectures are on the way, and
+    these slides are still being revised.
+    </div>
     """
         + footer(1)
     )

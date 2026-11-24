@@ -92,9 +92,10 @@ def _():
     <kbd>←</kbd> / <kbd>→</kbd> to move between slides; run
     `marimo edit` locally to change the code and the figures.
 
-    <div style="margin-top:2.2rem;padding:10px 14px;border-left:4px solid #2563eb;background:#eff6ff;font-size:0.92rem;">
-    This repository currently covers the first two lectures only. Exercise
-    notebooks are intentionally not included.
+    <div style="margin-top:2.2rem;padding:10px 14px;border-left:4px solid #d97706;background:#fffbeb;font-size:0.92rem;">
+    🚧 <strong>Under construction</strong> — only the first two lectures are
+    written so far. Exercises and the remaining lectures are on the way, and
+    these slides are still being revised.
     </div>
     """
         + footer(1)

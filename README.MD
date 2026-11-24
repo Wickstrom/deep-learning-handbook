@@ -8,9 +8,9 @@ The notebooks are the lecture slides. They are written as
 figures are live Python — matrices, gradients and training loops you can inspect
 and change.
 
-> **Status.** This repository currently covers the first two lectures.
-> Exercise notebooks and the remaining lectures are not included yet.
-> The repository is private while the material is being developed.
+> **🚧 Under construction.** This repository currently covers the first two
+> lectures. Exercise notebooks and the remaining lectures are not written yet,
+> and the material is still being revised — expect changes.
 
 ## 📑 Content
 
